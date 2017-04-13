@@ -203,8 +203,13 @@ class AirCargoProblem(Problem):
         executed.
         '''
         # TODO implement (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
+        tf_fluents = decode_state(node.state, self.state_map)
+        pos_only_list = tf_fluents.pos
         count = 0
-        return count
+        for pos in pos_only_list:
+            if pos in self.goal:
+                count += 1
+        return len(self.goal) - count
 
 
 def air_cargo_p1() -> AirCargoProblem:
