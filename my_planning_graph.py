@@ -343,7 +343,7 @@ class PlanningGraph():
         a_level = self.a_levels[level - 1] #a-level is level before current s-level
         s_level = self.s_levels[level]
         for a_node in a_level:
-            for s_child in a_node.effnodes:
+            for s_child in a_node.effnodes: #effnodes is set of *possible* child S-nodes
                 a_node.children.add(s_child)
                 s_child.parents.add(a_node)
                 s_level.add(s_child)
